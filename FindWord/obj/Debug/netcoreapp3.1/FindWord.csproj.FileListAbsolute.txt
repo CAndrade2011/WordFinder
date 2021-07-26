@@ -1,0 +1,14 @@
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.exe
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.deps.json
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.runtimeconfig.json
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.runtimeconfig.dev.json
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.dll
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\FindWord.pdb
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.AssemblyInfoInputs.cache
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.AssemblyInfo.cs
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.csproj.CoreCompileInputs.cache
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.dll
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.pdb
+C:\CSharp\FindWord\FindWord\obj\Debug\netcoreapp3.1\FindWord.genruntimeconfig.cache
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\matrix.txt
+C:\CSharp\FindWord\FindWord\bin\Debug\netcoreapp3.1\wordstream.txt
