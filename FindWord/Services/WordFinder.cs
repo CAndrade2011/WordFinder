@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace FindWord
+namespace FindWord.Services
 {
-    public class WordFinder : IDisposable
+    public class WordFinder : Interfaces.IWordFinder, IDisposable
     {
         #region Configs
 

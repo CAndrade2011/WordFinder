@@ -18,7 +18,7 @@ namespace FindWord
             Console.WriteLine("Welcome to Find Word!");
 
             Console.WriteLine("Loading scrambled word matrix file.");
-            var matrix = File.ReadAllLines("matrix.txt");
+            var matrix = File.ReadAllLines("Files\\matrix.txt");
             if (matrix == null || matrix.Length == 0)
             {
                 Console.WriteLine("Matrix file load error.");
@@ -26,7 +26,7 @@ namespace FindWord
             }
 
             Console.WriteLine("Loading word stream file!");
-            var wordstream = File.ReadAllLines("wordstream.txt");
+            var wordstream = File.ReadAllLines("Files\\wordstream.txt");
             if (wordstream == null || wordstream.Length == 0)
             {
                 Console.WriteLine("Wordstream file load error.");
@@ -34,7 +34,7 @@ namespace FindWord
             }
 
             Console.WriteLine("--> Starting process.");
-            using (var wf = new WordFinder(matrix.AsEnumerable()))
+            using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
             {
                 Console.WriteLine("--> Finding words.");
                 var wordsFound = wf.Find(wordstream.AsEnumerable());

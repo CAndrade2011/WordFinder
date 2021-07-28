@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mIXFr/plAigi7zcUL5fs0iDVbTeKdpOWymDQFmhzhfWeeoQqv03Ps7rc7gicxY9PbmLWEQGKcuYYiCxz5u4pWQ==",
+  "dgSpecHash": "H/QmHmEuPP5dW0hcqxpUPOHE6FDoF9JDZ7RO2p7BM6A6vsGFxCx8jsJ9jR3lzx5PYcMJ2QcwPlmOdBiDwBrvPA==",
   "success": true,
-  "projectFilePath": "C:\\CSharp\\FindWord\\FindWord\\FindWord.csproj",
+  "projectFilePath": "C:\\CSharp\\WordFinder\\FindWord\\FindWord.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
