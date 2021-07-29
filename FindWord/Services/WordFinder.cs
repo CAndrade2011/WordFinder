@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FindWord.DTO;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -113,27 +114,77 @@ namespace FindWord.Services
             }
 
             // Findign words
-            var ret = new List<string>();
+            var ret = new List<FoundWordDTO>();
             foreach (var ws in wordstream)
             {
-                if (!string.IsNullOrEmpty(ws) && !ret.Contains(ws.ToUpper()))
+                if (!string.IsNullOrEmpty(ws))
                 {
                     var wsupper = ws.ToUpper();
-                    foreach (var line in _Matrix)
+                    for (var j = 0; j < _Matrix.Count; j++)
                     {
-                        if (line.Contains(wsupper) && !ret.Contains(wsupper))
-                        {
-                            ret.Add(wsupper);
-                            if (ret.Count == _maxReturnCount)
-                                break;
-                        }
+                        var line = _Matrix[j];
+                        var countWords = CountWords(line, wsupper);
+                        if (countWords > 0)
+                            AddOrUpdWord(ref ret, wsupper, countWords);
                     }
                 }
-                if (ret.Count == _maxReturnCount)
-                    break;
             }
 
-            Debug.WriteLine($"Received {wordstream.Count()}, found {ret.Count} word(s)");
+            if (ret.Count > 0)
+            {
+                Debug.WriteLine($"Received {wordstream.Count()}, found {ret.Count} word(s)");
+                return ret.OrderByDescending(x => x.FoundCount).Take(10).Select(x => x.FoundWord).ToList();
+            }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
+        /// <summary>
+        /// Change values on unique return list
+        /// </summary>
+        /// <param name="dtos">Exists list</param>
+        /// <param name="wsupper">Current word</param>
+        /// <param name="countWords">How many times this word appear</param>
+        private void AddOrUpdWord(ref List<FoundWordDTO> dtos, string wsupper, int countWords)
+        {
+            var exists = dtos.Where(x => x.FoundWord == wsupper).FirstOrDefault();
+            if (exists != null && exists.FoundWord == wsupper)
+            {
+                exists.FoundCount += countWords;
+            }
+            else
+            {
+                exists = new FoundWordDTO { FoundCount = 0, FoundWord = wsupper };
+                exists.FoundCount += countWords;
+                dtos.Add(exists);
+            }
+        }
+
+        /// <summary>
+        /// Find how many times there is a word in a string
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="wsupper"></param>
+        /// <returns></returns>
+        private int CountWords(string line, string wsupper)
+        {
+            var ret = 0;
+            var countToEnd = 0;
+            var arrayIndex = 0;
+            var start = 0;
+            var end = line.Length;
+            while ((start <= end) && (arrayIndex > -1))
+            {
+                // start+count must be a position within -str-.
+                countToEnd = end - start;
+                arrayIndex = line.IndexOf(wsupper, start, countToEnd);
+                if (arrayIndex == -1) break;
+                Debug.WriteLine($"Found {wsupper} at {arrayIndex}");
+                ret++;
+                start = arrayIndex + 1;
+            }
             return ret;
         }
 
