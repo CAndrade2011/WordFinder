@@ -19,7 +19,7 @@ namespace FindWord.Services
 
         #region Test Methods
 
-        private List<string> _Matrix;
+        private string _Matrix;
 
         /// <summary>
         /// Constructor, needs to use with scrambed chars matrix 
@@ -48,12 +48,12 @@ namespace FindWord.Services
             // Check max line size to keep max of 64 chars
             var maxColumn = 0;
             var linesCount = 0;
-            _Matrix = new List<string>();
+            var sb = new StringBuilder();
             foreach (var line in matrix)
             {
-                Debug.WriteLine("Copying values to horizontal check");
+                //Debug.WriteLine("Copying values to horizontal check");
                 if (!string.IsNullOrEmpty(line))
-                    _Matrix.Add(line.ToUpper());
+                    sb.Append(line.ToUpper());
 
                 // Check matrix X dimension
                 linesCount++;
@@ -86,10 +86,11 @@ namespace FindWord.Services
 
                 // Creating new line
                 if (!string.IsNullOrEmpty(newLine))
-                    _Matrix.Add(newLine.ToUpper());
+                    sb.Append(newLine.ToUpper());
             }
 
-            Debug.WriteLine($"Received a {maxColumn}x{matrix.Count()} matrix, created a new {maxColumn}x{_Matrix.Count} matrix ");
+            Debug.WriteLine($"Received a {maxColumn}x{matrix.Count()} matrix, created a new text {sb.Length} chars ");
+            _Matrix = sb.ToString();
         }
 
         /// <summary>
@@ -120,20 +121,22 @@ namespace FindWord.Services
                 if (!string.IsNullOrEmpty(ws))
                 {
                     var wsupper = ws.ToUpper();
-                    for (var j = 0; j < _Matrix.Count; j++)
-                    {
-                        var line = _Matrix[j];
-                        var countWords = CountWords(line, wsupper);
-                        if (countWords > 0)
-                            AddOrUpdWord(ref ret, wsupper, countWords);
-                    }
+                    var countWords = CountWords(wsupper);
+                    if (countWords > 0)
+                        AddOrUpdWord(ref ret, wsupper, countWords);
                 }
             }
 
             if (ret.Count > 0)
             {
                 Debug.WriteLine($"Received {wordstream.Count()}, found {ret.Count} word(s)");
-                return ret.OrderByDescending(x => x.FoundCount).Take(10).Select(x => x.FoundWord).ToList();
+
+#if DEBUG
+                foreach (var ws in ret.OrderByDescending(x => x.FoundCount))
+                    Debug.WriteLine($"Found {ws.FoundWord}, {ws.FoundCount} time(s)");
+#endif
+
+                return ret.OrderByDescending(x => x.FoundCount).Take(_maxReturnCount).Select(x => x.FoundWord).ToList();
             }
             else
             {
@@ -168,18 +171,18 @@ namespace FindWord.Services
         /// <param name="line"></param>
         /// <param name="wsupper"></param>
         /// <returns></returns>
-        private int CountWords(string line, string wsupper)
+        private int CountWords(string wsupper)
         {
             var ret = 0;
             var countToEnd = 0;
             var arrayIndex = 0;
             var start = 0;
-            var end = line.Length;
+            var end = _Matrix.Length;
             while ((start <= end) && (arrayIndex > -1))
             {
                 // start+count must be a position within -str-.
                 countToEnd = end - start;
-                arrayIndex = line.IndexOf(wsupper, start, countToEnd);
+                arrayIndex = _Matrix.IndexOf(wsupper, start, countToEnd);
                 if (arrayIndex == -1) break;
                 Debug.WriteLine($"Found {wsupper} at {arrayIndex}");
                 ret++;
@@ -197,7 +200,7 @@ namespace FindWord.Services
                 Dispose(false);
         }
 
-        #endregion
+#endregion
 
         #region IDiposable Methods
 

@@ -33,101 +33,101 @@ namespace FindWord
                 return 2;
             }
             
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            try
-            {
-                Console.WriteLine("--> Starting test with no matrix.");
-                using (Interfaces.IWordFinder wf = new Services.WordFinder(new List<string>()))
-                {
-                    Console.WriteLine("--> Finding words.");
-                    var wordsFound = wf.Find(new List<string>());
-                    if (wordsFound == null || !wordsFound.Any())
-                    {
-                        Console.WriteLine(" R: Words not found.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Exception {ex.Message}");
-            }
+            //try
+            //{
+            //    Console.WriteLine("--> Starting test with no matrix.");
+            //    using (Interfaces.IWordFinder wf = new Services.WordFinder(new List<string>()))
+            //    {
+            //        Console.WriteLine("--> Finding words.");
+            //        var wordsFound = wf.Find(new List<string>());
+            //        if (wordsFound == null || !wordsFound.Any())
+            //        {
+            //            Console.WriteLine(" R: Words not found.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"--> Exception {ex.Message}");
+            //}
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            try
-            {
-                Console.WriteLine("--> Starting test with no wordstream.");
-                using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
-                {
-                    Console.WriteLine("--> Finding words.");
-                    var wordsFound = wf.Find(new List<string>());
-                    if (wordsFound == null || !wordsFound.Any())
-                    {
-                        Console.WriteLine(" R: Words not found.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Exception {ex.Message}");
-            }
+            //try
+            //{
+            //    Console.WriteLine("--> Starting test with no wordstream.");
+            //    using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
+            //    {
+            //        Console.WriteLine("--> Finding words.");
+            //        var wordsFound = wf.Find(new List<string>());
+            //        if (wordsFound == null || !wordsFound.Any())
+            //        {
+            //            Console.WriteLine(" R: Words not found.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"--> Exception {ex.Message}");
+            //}
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            try
-            {
-                Console.WriteLine("--> Starting test there's no wordstream.");
-                using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
-                {
-                    Console.WriteLine("--> Finding words.");
-                    var wordsFound = wf.Find(new List<string>() { "carlos", "andrade" });
-                    if (wordsFound == null || !wordsFound.Any())
-                    {
-                        Console.WriteLine(" R: Words not found.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Exception {ex.Message}");
-            }
+            //try
+            //{
+            //    Console.WriteLine("--> Starting test there's no wordstream.");
+            //    using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
+            //    {
+            //        Console.WriteLine("--> Finding words.");
+            //        var wordsFound = wf.Find(new List<string>() { "carlos", "andrade" });
+            //        if (wordsFound == null || !wordsFound.Any())
+            //        {
+            //            Console.WriteLine(" R: Words not found.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"--> Exception {ex.Message}");
+            //}
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            try
-            {
-                Console.WriteLine("--> Starting test just one wordstream.");
-                using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
-                {
-                    Console.WriteLine("--> Finding words.");
-                    var wordsFound = wf.Find(new List<string>() { "wind" });
-                    if (wordsFound == null || !wordsFound.Any())
-                    {
-                        Console.WriteLine(" R: Words not found.");
-                    }
-                    else
-                    {
-                        Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Exception {ex.Message}");
-            }
+            //try
+            //{
+            //    Console.WriteLine("--> Starting test just one wordstream.");
+            //    using (Interfaces.IWordFinder wf = new Services.WordFinder(matrix.AsEnumerable()))
+            //    {
+            //        Console.WriteLine("--> Finding words.");
+            //        var wordsFound = wf.Find(new List<string>() { "wind" });
+            //        if (wordsFound == null || !wordsFound.Any())
+            //        {
+            //            Console.WriteLine(" R: Words not found.");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine($" R: List of found words: {string.Join(", ", wordsFound)}.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"--> Exception {ex.Message}");
+            //}
 
             Console.WriteLine();
 
